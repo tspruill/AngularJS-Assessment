@@ -1,0 +1,80 @@
+<div class="containter">
+  <h2>Movie Gallery</h2>
+  <div class="testDiv">
+    <ul class="movieGallery">
+      <li ng-repeat="movie in $ctrl.allMovies" class="movieCard">
+        <div class="movieHeader">
+          <h3>{{movie.title}}</h3>
+          <h5>{{movie.duration}}</h5>
+        </div>
+        <div class="movieContent">
+          <div class="test">
+            <p>Director: {{movie.director}}</p>
+            <p>Release Date : {{movie.year}}</p>
+            <p>
+              Genre:
+              <span ng-repeat="genre in movie.genre">{{genre}} &nbsp;</span>
+            </p>
+            <p>Rating: {{movie.score}}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="movieAdd">
+    <button ng-click="$ctrl.openModal()">Add Movie</button>
+  </div>
+</div>
+<div id="movieModal">
+  <div class="modalContent">
+    <span class="close" ng-click="$ctrl.closeModal()">&times;</span>
+    <form ng-submit="$ctrl.addMovie(newMovie)">
+      <div class="modalInputContainer">
+        <h2>Add New Movie</h2>
+        <div class="modalInputs">
+          <label for="title">Movie Title: </label>
+          <input type="text" ng-model="newMovie.title" value="" id="title" />
+        </div>
+        <div class="modalInputs">
+          <label for="director">Movie Director: </label>
+
+          <input
+            type="text"
+            ng-model="newMovie.director"
+            id="director"
+            value=""
+          />
+        </div>
+        <div class="modalInputs">
+          <label for="score">Movie Rating: </label>
+
+          <input type="text" ng-model="newMovie.score" id="score" value="" />
+        </div>
+        <div class="modalInputs">
+          <label for="year">Movie Release Year: </label>
+
+          <input type="text" ng-model="newMovie.year" id="year" value="" />
+        </div>
+
+        <div class="modalInputs">
+          <label for="genre">Movie Genre: </label>
+
+          <input type="text" ng-model="newMovie.genre[0]" id="genre" value="" />
+        </div>
+
+        <div class="modalInputs">
+          <label for="runetime">Movie runetime: </label>
+
+          <input
+            type="text"
+            ng-model="newMovie.duration"
+            id="runetime"
+            value=""
+          />
+        </div>
+
+        <input type="submit" value="add" />
+      </div>
+    </form>
+  </div>
+</div>
